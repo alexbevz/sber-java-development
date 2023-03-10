@@ -5,13 +5,44 @@ import ru.bevz.hw1.CityCsvScanner;
 import ru.bevz.hw1.CityScanner;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        runHw1Part5();
+        runHw1Part7();
+    }
+
+    private static void runHw1Part7() {
+        List<City> cityList = prepareAndGetCityList();
+
+        final int cityListSize = cityList.size();
+
+        if (cityListSize == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        int cityWithMaxPopulationIndex = 0;
+        City cityWithMaxPopulation = cityList.get(cityWithMaxPopulationIndex);
+
+        for (int i = 1; i < cityListSize; i++) {
+            City currentCity = cityList.get(i);
+            if (cityWithMaxPopulation.getPopulation().compareTo(currentCity.getPopulation()) < 0) {
+                cityWithMaxPopulation = currentCity;
+                cityWithMaxPopulationIndex = i;
+            }
+        }
+
+        Integer maxPopulation = cityWithMaxPopulation.getPopulation();
+
+        System.out.printf(
+                "[%d] = %s",
+                cityWithMaxPopulationIndex,
+                new DecimalFormat("###,###").format(maxPopulation)
+        );
+
     }
 
     private static void runHw1Part5() {
