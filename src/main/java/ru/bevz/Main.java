@@ -9,10 +9,19 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        runHw1Part7();
+        runHw1Part9();
+    }
+
+    private static void runHw1Part9() {
+        List<City> cityList = prepareAndGetCityList();
+
+        cityList.stream()
+                .collect(Collectors.groupingBy(City::getRegion, Collectors.counting()))
+                .forEach((region, count) -> System.out.printf("%s - %d%n", region, count));
     }
 
     private static void runHw1Part7() {
@@ -38,7 +47,7 @@ public class Main {
         Integer maxPopulation = cityWithMaxPopulation.getPopulation();
 
         System.out.printf(
-                "[%d] = %s",
+                "[%d] = %s%n",
                 cityWithMaxPopulationIndex,
                 new DecimalFormat("###,###").format(maxPopulation)
         );
