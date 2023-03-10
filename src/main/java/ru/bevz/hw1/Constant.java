@@ -1,4 +1,4 @@
-package ru.bevz.hw1.part3;
+package ru.bevz.hw1;
 
 public class Constant {
 
