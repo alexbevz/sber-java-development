@@ -1,4 +1,4 @@
-package ru.bevz.hw1.part3;
+package ru.bevz.hw1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,8 +33,6 @@ public class CityCsvScanner implements CityScanner {
 
     private City convertStringLineToCity(String separator, String line) {
         String[] splitResult = line.split(separator);
-        System.out.println(splitResult.length);
-        System.out.println(line);
 
         String cityName = splitResult[1];
         String cityRegion = splitResult[2];
